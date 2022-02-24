@@ -1,114 +1,95 @@
 fun main() {
-    println("Hello World!")
-
-    val rows = 5
-    val k = 0
-
 //    1. piramida bintang
-    printNormalPiramid(rows, k)
+    printNormalPiramid()
+    println()
+    println()
 //   2. piramida terbalik bintang
-    printInvertedPiramid(rows)
+    printInvertedPiramid()
+    println()
+    println()
 //   3. pramida bintang dan terbalik
-    printNormalPiramid(rows, k)
-    printInvertedPiramid(rows)
+    printNormalPiramid()
+    printInvertedPiramid()
+    println()
+    println()
 //   4. X bintang
-    printInvertedPiramidOut(rows)
-    printNormalPiramidOut(rows, k)
+    printInvertedPiramidOut()
+    printNormalPiramidOut()
+    println()
+    println()
 //   5. segitiga siku siku
-    printTriangle(rows)
+    printTriangle()
 
 }
 
-private fun printTriangle(rows: Int) {
-    for (i in 1..rows) {
-        for (j in 1..i) {
-            print("* ")
-        }
+private fun printTriangle() {
+    for (i in 1..8) {
+        for (j in 1..i) print("* ")
         println()
     }
+    /*
+    print segitiga biasa
+    */
 }
 
-private fun printInvertedPiramid(rows: Int) {
-    for (i in rows downTo 1) {
-
-        for (space in 1..rows - i) {
-            print("  ")
-        }
-
-        for (j in i..2 * i - 1) {
-            print("* ")
-        }
-
-        for (j in 0..i - 1 - 1) {
-            print("* ")
-        }
-
+private fun printInvertedPiramid() {
+    for (i in 8 downTo 1) {
+        for (j in 1..8 - i)  print("  ")
+        for (k in i until 2 * i) print("* ")
+        for (l in 0 until i - 1) print("* ")
         println()
     }
+
+    /*
+    pakai downto
+    for pada i untuk menentukan banyaknya baris
+    for pada j membentuk segitiga 90 derajat kiri bawah / awalan
+    for pada k membentuk segitiga 90 derajat kanan atas
+    for pada k membentuk segitiga 90 derajat kiri atas
+   */
 }
 
-private fun printNormalPiramid(rows: Int, k: Int) {
-    var k1 = k
-    for (i in 1..rows) {
-        for (space in 1..rows - i) {
-            print("  ")
-        }
-
-        while (k1 != 2 * i - 1) {
-            print("* ")
-            ++k1
-        }
-
+private fun printNormalPiramid() {
+    for (i in 1..8) {
+        for (j in 1..8 - i) print("  ")
+        for (k in 1 until 2 * i) print("* ")
         println()
-        k1 = 0
     }
+    /*
+    for pada i untuk menentukan banyaknya baris
+    for pada j membentuk segitiga 90 derajat kiri atas
+    for pada k print biasa setelah for j
+    println untuk enter setelah selesai i
+    */
 }
 
-private fun printInvertedPiramidOut(rows: Int) {
-    for (i in rows downTo 1) {
-
-        for (space in 1..rows - i) {
-            print("  ")
-        }
-
-        for (j in i until 2 * i) {
-            if (j == i ) {
-                print("* ")
-            } else {
-                print("  ")
-            }
-        }
-
-        for (j in 0 until i - 1) {
-            if (j == i-1-1) {
-                print("* ")
-            } else {
-                print("  ")
-            }
-        }
-
+private fun printInvertedPiramidOut() {
+    for (i in 8 downTo 1) {
+        for (j in 1..8 - i) print("  ")
+        for (j in i until 2 * i) if (j == i ) print("* ") else print("  ")
+        for (j in 0 until i - 1) if (j == i-1-1) print("* ") else print("  ")
         println()
     }
+    /*
+    ini sama kayak printInvertedPiramid
+    cuman diambil luarnya saja
+     */
 }
-private fun printNormalPiramidOut(rows: Int, k: Int) {
-    var k1 = k
-    for (i in 1..rows) {
-        for (space in 1..rows - i) {
-            print("  ")
+private fun printNormalPiramidOut() {
+    var k = 0
+    for (i in 1..8) {
+        for (space in 1..8 - i) print("  ")
+        while (k != 2 * i - 1) {
+            if (k==0 || k==2*i-2) print("* ") else print("  ")
+            k++
         }
-
-        while (k1 != 2 * i - 1) {
-            if (k1==0 || k1==2*i-2) {
-                print("* ")
-            } else {
-                print("  ")
-            }
-            ++k1
-        }
-
         println()
-        k1 = 0
+        k = 0
     }
+    /*
+    ini sama kayak printNormalPiramid
+    cuman diambil luarnya saja
+     */
 
 }
 
